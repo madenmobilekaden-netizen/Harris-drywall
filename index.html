@@ -284,11 +284,13 @@
     .hero {
       position: relative;
       height: 100svh;
-      min-height: 620px;
+      min-height: 640px;
       display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      padding: 0 5vw 5vh;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--nav-h) 5vw 0;
       overflow: hidden;
     }
 
@@ -296,12 +298,11 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to right, rgba(5,8,20,0.88) 0%, rgba(5,8,20,0.5) 55%, rgba(5,8,20,0.15) 100%),
-        linear-gradient(to bottom, rgba(5,8,20,0.15) 0%, rgba(5,8,20,0.55) 100%),
+        linear-gradient(to bottom, rgba(5,8,20,0.55) 0%, rgba(5,8,20,0.25) 40%, rgba(5,8,20,0.72) 100%),
         url('https://i.ibb.co/fYXQtb2Y/harris2.jpg') center/cover no-repeat;
       transform: scale(1.06);
       transition: transform 12s linear;
-      filter: contrast(1.08) saturate(1.12) brightness(1.04);
+      filter: contrast(1.08) saturate(1.1) brightness(0.95);
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
       will-change: transform;
@@ -320,75 +321,65 @@
     .hero-content {
       position: relative;
       z-index: 2;
-      text-align: left;
-      max-width: 560px;
-      padding-bottom: 1rem;
-    }
-
-    .hero-logo {
-      margin-bottom: 1.6rem;
-      display: flex;
-      align-items: center;
-      gap: 0rem;
-    }
-    .hero-logo img {
-      width: clamp(100px, 14vw, 160px);
-      height: auto;
-      filter: drop-shadow(0 0 18px rgba(74,122,173,0.5));
-    }
-    .hero-logo-text {
+      text-align: center;
+      max-width: 780px;
       display: flex;
       flex-direction: column;
-      line-height: 1.2;
+      align-items: center;
+      gap: 0;
     }
-    .hero-logo-text .brand-top {
-      font-family: var(--ff-label);
-      font-size: clamp(0.8rem, 1.2vw, 1rem);
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--clr-text);
+
+    /* Award pill at top */
+    .hero-award {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.4);
+      padding: 0.45rem 1.1rem;
+      margin-bottom: 2rem;
     }
-    .hero-logo-text .brand-main {
+    .hero-award-stars { color: #c9a84c; font-size: 0.75rem; letter-spacing: 2px; }
+    .hero-award-text {
       font-family: var(--ff-label);
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-weight: 700;
-      letter-spacing: 0.04em;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--clr-cream);
+      color: #c9a84c;
     }
-    .hero-logo-text .brand-sub {
-      font-family: var(--ff-label);
-      font-size: clamp(0.65rem, 1vw, 0.85rem);
-      font-weight: 300;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--clr-blue-lt);
+
+    /* Logo mark */
+    .hero-logo {
+      margin-bottom: 1.8rem;
+    }
+    .hero-logo img {
+      width: clamp(72px, 10vw, 100px);
+      height: auto;
+      filter: drop-shadow(0 0 20px rgba(74,122,173,0.55));
     }
 
     .hero-title {
-      font-family: var(--ff-label);
-      font-size: clamp(1.8rem, 4vw, 3.4rem);
-      font-weight: 700;
+      font-family: var(--ff-display);
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-weight: 300;
       color: var(--clr-cream);
-      line-height: 1.12;
-      margin-bottom: 0.8rem;
-      letter-spacing: 0.01em;
-      text-transform: uppercase;
+      line-height: 1.08;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.01em;
     }
     .hero-title em {
-      font-style: normal;
-      color: #4da6ff;
-      display: block;
+      font-style: italic;
+      color: #6fb3ff;
     }
 
     .hero-sub {
       font-family: var(--ff-body);
-      font-size: clamp(0.9rem, 1.3vw, 1.05rem);
-      font-style: italic;
-      color: var(--clr-cream);
-      margin-bottom: 1.8rem;
-      line-height: 1.6;
+      font-size: clamp(0.95rem, 1.5vw, 1.12rem);
+      color: var(--clr-text);
+      margin-bottom: 2.4rem;
+      line-height: 1.65;
+      max-width: 520px;
     }
 
     .hero-actions {
@@ -396,128 +387,77 @@
       gap: 1rem;
       flex-wrap: wrap;
       align-items: center;
-      margin-bottom: 1.4rem;
+      justify-content: center;
+      margin-bottom: 3rem;
     }
 
-    .hero-contact { margin-bottom: 0; }
-    .hero-contact-row {
+    /* Quick-contact strip */
+    .hero-contact-strip {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 2rem;
+      padding: 0.9rem 2rem;
+      background: rgba(6,8,16,0.55);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--clr-line);
     }
-    .hero-contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-    .hero-contact a {
+    .hero-contact-strip a {
       display: flex;
       align-items: center;
-      gap: 0.55rem;
-      color: var(--clr-cream);
-      text-decoration: none;
+      gap: 0.5rem;
       font-family: var(--ff-label);
-      font-size: clamp(0.78rem, 1.1vw, 0.9rem);
+      font-size: 0.75rem;
       font-weight: 500;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.06em;
+      color: var(--clr-text);
       transition: color 0.2s;
     }
-    .hero-contact a:hover { color: #4da6ff; }
-    .contact-icon {
-      width: 20px; height: 20px;
-      background: rgba(61,111,171,0.35);
+    .hero-contact-strip a:hover { color: var(--clr-cream); }
+    .strip-icon {
+      width: 18px; height: 18px;
+      background: rgba(61,111,171,0.3);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       flex-shrink: 0;
     }
-    .hero-fb {
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-      text-decoration: none;
+    .strip-divider {
+      width: 1px; height: 20px;
+      background: var(--clr-line);
     }
     .fb-icon {
-      width: 26px; height: 26px;
+      width: 22px; height: 22px;
       background: #1877f2;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       color: #fff;
-      font-size: 0.82rem;
+      font-size: 0.72rem;
       font-weight: 700;
       flex-shrink: 0;
     }
-    .hero-fb span {
-      font-family: var(--ff-label);
-      font-size: 0.72rem;
-      color: var(--clr-text);
-      letter-spacing: 0.02em;
-      line-height: 1.3;
-    }
 
-    .hero-badge {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 86px; height: 86px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #1e2f5c 0%, #0d1730 100%);
-      border: 2px solid #c9a84c;
-      text-align: center;
-      padding: 10px;
-      flex-shrink: 0;
-      box-shadow: 0 0 20px rgba(201,168,76,0.25);
-    }
-    .hero-badge-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      line-height: 1.25;
-    }
-    .badge-stars { color: #c9a84c; font-size: 0.45rem; letter-spacing: 1px; margin-bottom: 1px; }
-    .badge-line1 { font-family: var(--ff-label); font-size: 0.42rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c9a84c; }
-    .badge-line2 { font-family: var(--ff-label); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--clr-cream); }
-    .badge-dash  { font-family: var(--ff-label); font-size: 0.4rem; letter-spacing: 0.15em; text-transform: uppercase; color: #c9a84c; }
-    .badge-line3 { font-family: var(--ff-label); font-size: 0.44rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #c9a84c; }
-
-    .hero-person {
-      position: relative;
-      z-index: 2;
-      align-self: flex-end;
-      width: clamp(240px, 30vw, 420px);
-      flex-shrink: 0;
-      pointer-events: none;
-    }
-    .hero-person img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: contain;
-      object-position: bottom;
-      filter: drop-shadow(-10px 0 40px rgba(0,0,0,0.7));
-    }
-
+    /* Scroll indicator */
     .hero-scroll {
       position: absolute;
-      bottom: 2.5rem;
+      bottom: 2.2rem;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.5rem;
-      opacity: 0.4;
+      opacity: 0.35;
       z-index: 3;
     }
     .hero-scroll span {
       font-family: var(--ff-label);
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
     }
     .scroll-line {
       width: 1px;
-      height: 50px;
+      height: 44px;
       background: linear-gradient(to bottom, var(--clr-blue), transparent);
       animation: scrollPulse 2.2s ease-in-out infinite;
     }
@@ -526,16 +466,15 @@
       50%       { transform: scaleY(1); transform-origin: top; }
     }
 
-    .hero-call-btn { display: none; }
     @media (max-width: 768px) {
-      .hero-call-btn { display: inline-flex; }
+      .hero { padding-top: var(--nav-h); justify-content: center; }
+      .hero-title { font-size: clamp(2rem, 9vw, 3rem); }
+      .hero-contact-strip { flex-direction: column; gap: 0.8rem; text-align: center; }
+      .strip-divider { width: 40px; height: 1px; }
     }
 
-    @media (max-width: 768px) {
-      .hero { padding: 0 5vw 10vw; }
-      .hero-person { display: none; }
-      .hero-badge { width: 68px; height: 68px; }
-      .hero-title { font-size: clamp(1.6rem, 7vw, 2.4rem); }
+    @media (max-width: 480px) {
+      .hero-contact-strip { display: none; }
     }
 
     /* ============================================================
@@ -1284,59 +1223,52 @@
 
     <div class="hero-content">
 
-      <div class="hero-logo reveal">
+      <div class="hero-award reveal">
+        <span class="hero-award-stars">★★★★★</span>
+        <span class="hero-award-text">Best at the Lake &mdash; Finalist &nbsp;·&nbsp; 5-Star Google Reviews</span>
+      </div>
+
+      <div class="hero-logo reveal reveal-delay-1">
         <img
           src="https://i.ibb.co/W4qj7msB/image-1780069522668-removebg-preview.png"
           alt="Harris Group Drywall Solutions logo"
           onerror="this.style.display='none';"
         />
-        <div class="hero-logo-text">
-          <span class="brand-top">Harris Group</span>
-          <span class="brand-main">Drywall</span>
-          <span class="brand-sub">Solutions &mdash; Expert Craftsmanship</span>
-        </div>
       </div>
 
-      <h1 class="hero-title reveal reveal-delay-1">
-        Lake of the Ozarks'
-        <em>Premier Drywall &amp;<br>Painting Contractors</em>
+      <h1 class="hero-title reveal reveal-delay-2">
+        Lake of the Ozarks'<br>
+        <em>Premier Drywall &amp; Painting</em>
       </h1>
 
-      <p class="hero-sub reveal reveal-delay-2">A one stop shop for all.</p>
+      <p class="hero-sub reveal reveal-delay-3">
+        3rd generation craftsmanship. Residential, commercial, and everything in between —
+        delivered on time, spotlessly clean, and exactly as promised.
+      </p>
 
-      <div class="hero-actions reveal reveal-delay-3">
-        <a href="#contact" class="btn btn-primary">Schedule Estimate</a>
-        <a href="tel:5738366843" class="btn btn-outline hero-call-btn">Call Now</a>
+      <div class="hero-actions reveal reveal-delay-4">
+        <a href="#contact" class="btn btn-primary btn-arrow">Get a Free Quote</a>
+        <a href="tel:5738366843" class="btn btn-outline">Call (573) 836-6843</a>
       </div>
 
-      <div class="hero-contact reveal reveal-delay-4">
-        <div class="hero-contact-row">
-          <div class="hero-badge">
-            <div class="hero-badge-inner">
-              <span class="badge-stars">★★★★★</span>
-              <span class="badge-line1">Best at</span>
-              <span class="badge-line2">The Lake</span>
-              <span class="badge-dash">— Finalist —</span>
-            </div>
-          </div>
-          <div class="hero-contact-links">
-            <a href="tel:5738366843">
-              <span class="contact-icon">📞</span>
-              573-836-6843
-            </a>
-            <a href="mailto:harrisgroupllc2024@gmail.com">
-              <span class="contact-icon">✉</span>
-              harrisgroupllc2024@gmail.com
-            </a>
-            <a href="https://www.facebook.com/HarrisGroupLLC" target="_blank" rel="noopener" class="hero-fb">
-              <span class="fb-icon">f</span>
-              <span>Visit us on Facebook @ Harris Group, LLC</span>
-            </a>
-          </div>
-        </div>
+      <div class="hero-contact-strip reveal reveal-delay-4">
+        <a href="mailto:harrisgroupllc2024@gmail.com">
+          <span class="strip-icon">✉</span>
+          harrisgroupllc2024@gmail.com
+        </a>
+        <div class="strip-divider"></div>
+        <a href="https://www.facebook.com/HarrisGroupLLC" target="_blank" rel="noopener">
+          <span class="fb-icon">f</span>
+          Facebook
+        </a>
+        <div class="strip-divider"></div>
+        <a href="https://www.instagram.com/harrisgroup_solutions/" target="_blank" rel="noopener">
+          <span class="strip-icon">@</span>
+          @harrisgroup_solutions
+        </a>
       </div>
+
     </div>
-
 
     <div class="hero-scroll">
       <span>Scroll</span>
