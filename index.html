@@ -1198,6 +1198,86 @@
       section { padding-block: 3.5rem; }
       .hero-title { font-size: clamp(1.4rem, 8vw, 1.8rem); }
     }
+
+    /* ============================================================
+       SERVICE MODAL
+    ============================================================ */
+    .service-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: rgba(4,6,14,0.88);
+      backdrop-filter: blur(12px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s var(--ease);
+    }
+    .service-modal.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .service-modal-inner {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-line);
+      width: min(900px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: translateY(24px);
+      transition: transform 0.4s var(--ease);
+    }
+    .service-modal.open .service-modal-inner {
+      transform: none;
+    }
+    .service-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.8rem 2rem;
+      border-bottom: 1px solid var(--clr-line);
+    }
+    .service-modal-title {
+      font-family: var(--ff-display);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--clr-cream);
+    }
+    .service-modal-close {
+      background: none;
+      border: 1px solid var(--clr-line);
+      color: var(--clr-muted);
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: border-color 0.3s, color 0.3s;
+      flex-shrink: 0;
+    }
+    .service-modal-close:hover {
+      border-color: var(--clr-blue);
+      color: var(--clr-cream);
+    }
+    .service-modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .service-modal-grid img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s var(--ease);
+    }
+    .service-modal-grid img:hover { transform: scale(1.03); }
+
+    @media (max-width: 600px) {
+      .service-modal-grid { grid-template-columns: 1fr; }
+      .service-modal-header { padding: 1.2rem 1.4rem; }
+    }
   </style>
 </head>
 <body>
@@ -1353,7 +1433,7 @@
 
       <div class="services-grid">
 
-        <div class="service-card reveal">
+        <div class="service-card reveal" data-service="Full Scope Drywall" data-photos='["https://i.ibb.co/fYXQtb2Y/harris2.jpg","https://i.ibb.co/DHf4Nrth/harris3.jpg","https://i.ibb.co/yr9gVvq/harris4.jpg","https://i.ibb.co/xSmPWz18/harris5.jpg"]'>
           <div class="service-num">01</div>
           <h3 class="service-title">Full Scope Drywall</h3>
           <p class="service-desc">
@@ -1365,7 +1445,7 @@
           <a href="#contact" class="service-link">Get a quote →</a>
         </div>
 
-        <div class="service-card reveal reveal-delay-1">
+        <div class="service-card reveal reveal-delay-1" data-service="Full Painting Services" data-photos='["https://i.ibb.co/hFCBdCrv/harris6.jpg","https://i.ibb.co/Cp8Wgtrq/harris7.jpg","https://i.ibb.co/0pL3snQp/harris8.jpg","https://i.ibb.co/MydWt4K8/harris9.jpg"]'>
           <div class="service-num">02</div>
           <h3 class="service-title">Full Painting Services</h3>
           <p class="service-desc">
@@ -1377,7 +1457,7 @@
           <a href="#contact" class="service-link">Get a quote →</a>
         </div>
 
-        <div class="service-card reveal reveal-delay-2">
+        <div class="service-card reveal reveal-delay-2" data-service="Level 5 Finishing & Texture" data-photos='["https://i.ibb.co/DfQrTndw/harris10.jpg","https://i.ibb.co/BHLw94DL/harris11.jpg","https://i.ibb.co/60TJDgqQ/harris12.jpg","https://i.ibb.co/1hJnPq5/harris13.jpg"]'>
           <div class="service-num">03</div>
           <h3 class="service-title">Level 5 Finishing & Texture</h3>
           <p class="service-desc">
@@ -1388,7 +1468,7 @@
           <a href="#contact" class="service-link">Get a quote →</a>
         </div>
 
-        <div class="service-card reveal">
+        <div class="service-card reveal" data-service="Metal Stud Framing" data-photos='["https://i.ibb.co/Xx70hz0L/harris14.jpg","https://i.ibb.co/CKxDCRQ3/harris15.jpg","https://i.ibb.co/zWnF66wp/harris16.jpg","https://i.ibb.co/9kFqdR57/harris17.jpg"]'>
           <div class="service-num">04</div>
           <h3 class="service-title">Metal Stud Framing</h3>
           <p class="service-desc">
@@ -1398,7 +1478,7 @@
           <a href="#contact" class="service-link">Get a quote →</a>
         </div>
 
-        <div class="service-card reveal reveal-delay-1">
+        <div class="service-card reveal reveal-delay-1" data-service="Fire, Water & Termite Restoration" data-photos='["https://i.ibb.co/WvGJ2JrC/harris18.jpg","https://i.ibb.co/CKyqw6TV/harris19.jpg","https://i.ibb.co/wNzbpN02/harris20.jpg","https://i.ibb.co/QvQY1PTQ/harris21.jpg"]'>
           <div class="service-num">05</div>
           <h3 class="service-title">Fire, Water & Termite Restoration</h3>
           <p class="service-desc">
@@ -1409,7 +1489,7 @@
           <a href="#contact" class="service-link">Get a quote →</a>
         </div>
 
-        <div class="service-card reveal reveal-delay-2">
+        <div class="service-card reveal reveal-delay-2" data-service="Repair, Patching & Painting" data-photos='["https://i.ibb.co/DHf4Nrth/harris3.jpg","https://i.ibb.co/Cp8Wgtrq/harris7.jpg","https://i.ibb.co/60TJDgqQ/harris12.jpg","https://i.ibb.co/zWnF66wp/harris16.jpg"]'>
           <div class="service-num">06</div>
           <h3 class="service-title">Repair, Patching & Painting</h3>
           <p class="service-desc">
@@ -2017,6 +2097,19 @@
   </footer>
 
   <!-- ═══════════════════════════════════════════
+       SERVICE MODAL
+  ═══════════════════════════════════════════ -->
+  <div class="service-modal" id="serviceModal">
+    <div class="service-modal-inner">
+      <div class="service-modal-header">
+        <h3 class="service-modal-title" id="serviceModalTitle"></h3>
+        <button class="service-modal-close" id="serviceModalClose" aria-label="Close">✕</button>
+      </div>
+      <div class="service-modal-grid" id="serviceModalGrid"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
        JAVASCRIPT
   ═══════════════════════════════════════════ -->
   <script>
@@ -2070,6 +2163,34 @@
       mobileMenu.classList.remove('open');
       document.body.style.overflow = '';
     }
+
+    /* ── Service modal ──────────────────────── */
+    const modal      = document.getElementById('serviceModal');
+    const modalTitle = document.getElementById('serviceModalTitle');
+    const modalGrid  = document.getElementById('serviceModalGrid');
+    const modalClose = document.getElementById('serviceModalClose');
+
+    document.querySelectorAll('.service-card[data-photos]').forEach(card => {
+      card.addEventListener('click', () => {
+        const photos = JSON.parse(card.dataset.photos);
+        const title  = card.dataset.service;
+        modalTitle.textContent = title;
+        modalGrid.innerHTML = photos.map(src =>
+          `<img src="${src}" alt="${title}" loading="lazy" />`
+        ).join('');
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
   </script>
 
 </body>
