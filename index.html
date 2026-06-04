@@ -598,12 +598,27 @@
 
     .service-card {
       background: var(--clr-surface-2);
+      background-size: cover;
+      background-position: center;
       padding: 2.8rem;
       position: relative;
       overflow: hidden;
       transition: background 0.4s;
       cursor: none;
     }
+    /* Dark overlay sits on top of bg image, fades on hover */
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--clr-surface-2);
+      transition: background 0.5s var(--ease);
+      z-index: 0;
+    }
+    .service-card:hover::after {
+      background: rgba(6, 8, 16, 0.65);
+    }
+    /* Blue bottom line stays above overlay */
     .service-card::before {
       content: '';
       position: absolute;
@@ -613,9 +628,19 @@
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.45s var(--ease);
+      z-index: 2;
     }
-    .service-card:hover { background: #181d2a; }
     .service-card:hover::before { transform: scaleX(1); }
+    /* All card content stays above overlay */
+    .service-card > * { position: relative; z-index: 1; }
+
+    /* Per-card background images */
+    .service-card:nth-child(1) { background-image: url('https://i.ibb.co/xSmPWz18/harris5.jpg'); }
+    .service-card:nth-child(2) { background-image: url('https://i.ibb.co/hFCBdCrv/harris6.jpg'); }
+    .service-card:nth-child(3) { background-image: url('https://i.ibb.co/MydWt4K8/harris9.jpg'); }
+    .service-card:nth-child(4) { background-image: url('https://i.ibb.co/0pL3snQp/harris8.jpg'); }
+    .service-card:nth-child(5) { background-image: url('https://i.ibb.co/BHLw94DL/harris11.jpg'); }
+    .service-card:nth-child(6) { background-image: url('https://i.ibb.co/DfQrTndw/harris10.jpg'); }
 
     .service-num {
       font-family: var(--ff-display);
